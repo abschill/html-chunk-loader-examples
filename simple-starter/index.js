@@ -23,35 +23,29 @@ const partialData = () =>{
     }
 }
 const templateData = ( id ) => {
-    if( id ) {
-        const matchedPost = mockDatabase.filter( d => d.id === id )[0];
-        return matchedPost;
-    }
-    else {
-        return { 
-            //Same with this one
-            "*": {
-                content: 'My Blog',
-                page_description: 'Fallback Website Description',
-                items: [
-                    'foo',
-                    'bar'
-                ]
-            },
-            "home":{
-                items2: [
-                    { 'title': 'foo', desc: 'foo' },
-                    { 'title': 'bar', desc: 'bar' }
-                ]
-            },
-            "about":{
-                content: 'About Page',
-                "list":[
-                    "foo", 'bar'
-                ]
-            }
-        } 
-    }
+    return { 
+        //Same with this one
+        "*": {
+            content: 'My Blog',
+            page_description: 'Fallback Website Description',
+            items: [
+                'foo',
+                'bar'
+            ]
+        },
+        "home":{
+            items2: [
+                { 'title': 'foo', desc: 'foo' },
+                { 'title': 'bar', desc: 'bar' }
+            ]
+        },
+        "about":{
+            content: 'About Page',
+            "list":[
+                "foo", 'bar'
+            ]
+        }
+    } 
     
 }
 function getPostTitle( id ) {

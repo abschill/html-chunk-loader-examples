@@ -32,12 +32,6 @@ const templateData = ( ) => {
                 'bar'
             ]
         },
-        "home":{
-            items2: [
-                { 'title': 'foo', desc: 'foo' },
-                { 'title': 'bar', desc: 'bar' }
-            ]
-        },
         "about":{
             page_title: 'About Page',
             content: 'About Page',
@@ -62,11 +56,15 @@ const title0 = getPostTitle( 0 );
 const title1 = getPostTitle( 1 );
 
 // myLoader.loadTemplate( 'about' );
-const template0 = myLoader.template( 'home' );
+const template0 = myLoader.template( 'home', {
+    items2:[
+        { 'title': 'foo', desc: 'foo' },
+        { 'title': 'bar', desc: 'bar' }
+] } );
 const template1 = myLoader.template( 'about' );
 //can override title in this argument
-const template2 = myLoader.template( 'post', { page_title: title0, blog_post: title0 } );
-const template3 = myLoader.template( 'post', { page_title: title1, blog_post: title1 } ); 
+const template2 = myLoader.template( 'post', { partialInput: { page_title: title0 }, blog_post: title0 } );
+const template3 = myLoader.template( 'post', { partialInput: { page_title: title1 }, blog_post: title1 } ); 
 console.log( template0 );
 console.log( '~~~~~~~~~~~~');
 console.log( template1 );

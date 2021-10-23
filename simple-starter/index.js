@@ -4,17 +4,16 @@ const partialData = () =>{
     return {
         //this value can be overridden by the second argument in the template function
         "*": {
-            "page_title":"Hello World"
+            "page_title":"My Blog",
+            "desc": "Cool Description",
         },
         head:{
-            "desc": "Cool Description",
             "styles":[
                     "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css",
                     "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
             ]
         },
         nav: {
-            page_title: "Navbar Title",
             links:[
                 { url: '/', label: 'Home' },
                 { url: '/test', label: 'Test' }
@@ -22,7 +21,7 @@ const partialData = () =>{
         }
     }
 }
-const templateData = ( id ) => {
+const templateData = ( ) => {
     return { 
         //Same with this one
         "*": {
@@ -40,6 +39,7 @@ const templateData = ( id ) => {
             ]
         },
         "about":{
+            page_title: 'About Page',
             content: 'About Page',
             "list":[
                 "foo", 'bar'
@@ -58,14 +58,19 @@ const myLoader = loader( {
     templateInput: templateData(),
     debug: false
 } );
-const post0 = { blog_post: getPostTitle( 0 ) };
-const post1 = { blog_post: getPostTitle( 1 ) };
+const title0 = getPostTitle( 0 );
+const title1 = getPostTitle( 1 );
+
 // myLoader.loadTemplate( 'about' );
 const template0 = myLoader.template( 'home' );
-const template1 = myLoader.template( 'post', post0 );
-const template2 = myLoader.template( 'post', post1 ); 
+const template1 = myLoader.template( 'about' );
+//can override title in this argument
+const template2 = myLoader.template( 'post', { page_title: title0, blog_post: title0 } );
+const template3 = myLoader.template( 'post', { page_title: title1, blog_post: title1 } ); 
 console.log( template0 );
 console.log( '~~~~~~~~~~~~');
 console.log( template1 );
 console.log( '~~~~~~~~~~~~');
 console.log( template2 );
+console.log( '~~~~~~~~~~~~');
+console.log( template3 );

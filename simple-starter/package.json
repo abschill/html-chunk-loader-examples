@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "html-chunk-loader": "^0.1.5"
+    "html-chunk-loader": "^0.1.7"
   }
 }

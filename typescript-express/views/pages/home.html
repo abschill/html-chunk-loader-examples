@@ -1,0 +1,21 @@
+<!--@render-partial=head-->
+<!--@render-partial=nav-->
+<main>
+    <h1><!--@render=content--></h1>
+    <h2>Test</h2>
+    <ul>
+        <!--@for(tags){
+            <li class="test">{_}</li>    
+        }-->
+    </ul>
+    <ul>
+        <!--@for(links){
+           <li>
+               <a href="{url}">
+                   {label}
+               </a>
+           </li>
+       }-->
+   </ul>
+</main>
+<!--@render-partial=footer-->

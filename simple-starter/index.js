@@ -3,25 +3,20 @@ const mockDatabase = require( './mock/data.json' );
 const partialData = () =>{
     return {
         //this value can be overridden by the second argument in the template function
-        "*": {
-            "page_title":"My Blog",
-            "desc": "Cool Description",
-        },
-        head:{
-            "styles":[
-                    "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css",
-                    "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-            ]
-        },
-        nav: {
-            links:[
-                { url: '/', label: 'Home' },
-                { url: '/test', label: 'Test' }
-            ]
-        }
+
+        page_title:"My Blog",
+        desc: "Cool Description",
+        styles: [
+            "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css",
+            "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        ],
+        links: [
+            { url: '/', label: 'Home' },
+            { url: '/test', label: 'Test' }
+        ]
     }
 }
-const templateData = ( ) => {
+const templateData = () => {
     return { 
         //Same with this one
         "*": {
@@ -63,6 +58,7 @@ const template0 = myLoader.template( 'home', {
 ] } );
 const template1 = myLoader.template( 'about' );
 //can override title in this argument
+
 const template2 = myLoader.template( 'post', { partialInput: { page_title: title0 }, blog_post: title0 } );
 const template3 = myLoader.template( 'post', { partialInput: { page_title: title1 }, blog_post: title1 } ); 
 console.log( template0 );

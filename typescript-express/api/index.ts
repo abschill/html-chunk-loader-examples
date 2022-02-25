@@ -1,4 +1,8 @@
 import { Loader } from 'html-chunk-loader/dist/loader.js';
+import expr, { Request, Response } from 'express';
+
+const app = expr();
+
 
 const l = Loader( {
     pathRoot: 'views',
@@ -15,25 +19,29 @@ const l = Loader( {
             { url: '/', label: 'Home' },
             { url: '/test', label: 'Test' }
         ]
-    },
-    debug: true
+    }
 } );
 
 
-l.template( 'home', {
-        tags: [
-            "foo",
-            "bar"
-        ],
-        links: [
-            {
-              url: '/test',
-              label: 'test'
-            },
-            {
-                url: '/test2',
-                label: 'test2'
-            }
-           
-          ]
-} )
+
+
+app.get( '/', ( req: Request, res: Response ) => res.send( l.template( 'home', {
+    content: 'Hello World',
+    tags: [
+        "foo",
+        "bar"
+    ],
+    links: [
+        {
+          url: '/test',
+          label: 'test'
+        },
+        {
+            url: '/test2',
+            label: 'test2'
+        }
+       
+      ]
+} ) ) );
+
+app.listen( 3001 );

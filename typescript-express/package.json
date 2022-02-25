@@ -1,10 +1,11 @@
 {
-  "name": "typescript",
+  "name": "hcl-typescript-express",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "api/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node api"
   },
   "dependencies": {
     "express": "^4.17.2",

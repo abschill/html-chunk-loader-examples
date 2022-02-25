@@ -1,6 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const loader_js_1 = require("html-chunk-loader/dist/loader.js");
+const express_1 = __importDefault(require("express"));
+const app = (0, express_1.default)();
 const l = (0, loader_js_1.Loader)({
     pathRoot: 'views',
     templates: 'pages',
@@ -16,10 +21,10 @@ const l = (0, loader_js_1.Loader)({
             { url: '/', label: 'Home' },
             { url: '/test', label: 'Test' }
         ]
-    },
-    debug: true
+    }
 });
-l.template('home', {
+app.get('/', (req, res) => res.send(l.template('home', {
+    content: 'Hello World',
     tags: [
         "foo",
         "bar"
@@ -34,4 +39,5 @@ l.template('home', {
             label: 'test2'
         }
     ]
-});
+})));
+app.listen(3001);

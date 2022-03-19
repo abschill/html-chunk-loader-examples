@@ -1,15 +1,9 @@
-<!--@render-partial=head-->
-<!--@render-partial=nav-->
-<main>
+<!--@partial=head-->
+<!--@partial=nav-->
+<main class="text-center mx-auto max-w-lg">
     <h1><!--@render=content--></h1>
-    <h2>Test</h2>
     <ul>
-        <!--@for(tags){
-            <li class="test">{_}</li>    
-        }-->
-    </ul>
-    <ul>
-        <!--@for(links){
+        <!--@loop(links){
            <li>
                <a href="{url}">
                    {label}
@@ -18,4 +12,4 @@
        }-->
    </ul>
 </main>
-<!--@render-partial=footer-->
+<!--@partial=footer-->

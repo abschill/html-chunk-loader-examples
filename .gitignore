@@ -1,4 +1,3 @@
 /*/node_modules
 /*/yarn.lock
-blog-starter
-fastify-ssr
+/typescript-express/api/index.js

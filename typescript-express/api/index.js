@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const loader_js_1 = require("html-chunk-loader/dist/loader.js");
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
-const l = (0, loader_js_1.Loader)({
+const l = (0, loader_js_1.createLoader)({
     pathRoot: 'views',
     templates: 'pages',
     partials: 'partials',

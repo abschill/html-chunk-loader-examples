@@ -1,7 +1,7 @@
 const express = require( 'express' );
 const app = express();
-const loader = require( 'html-chunk-loader' );
-const Handler = loader({
+const createLoader = require( 'html-chunk-loader' );
+const Handler = createLoader({
      partialInput: {
         title: 'HTML Chunk Loader',
         styles: [

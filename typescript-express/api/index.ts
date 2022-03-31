@@ -1,10 +1,9 @@
-import { Loader } from 'html-chunk-loader/dist/loader.js';
+import { createLoader } from 'html-chunk-loader/dist/loader.js';
 import expr, { Request, Response } from 'express';
 
 const app = expr();
 
-
-const l = Loader( {
+const l = createLoader( {
     pathRoot: 'views',
     templates: 'pages',
     partials: 'partials',

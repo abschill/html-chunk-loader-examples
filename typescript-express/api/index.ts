@@ -1,9 +1,19 @@
-import { createLoader } from 'html-chunk-loader/dist/loader.js';
-import expr, { Request, Response } from 'express';
+import { createLoader, Loader } from 'html-chunk-loader/dist/loader.js';
+import expr, { Request, Response, Application } from 'express';
 
-const app = expr();
+// create your custom type for the application
+interface HCLApplication extends Application {
+    mainLoader ?: Loader;
+};
 
-const l = createLoader( {
+// custom type for the response scope
+interface HCLAppRequest extends Request {
+    app : HCLApplication;
+};
+
+const app = expr() as HCLApplication;
+
+const myLoader = createLoader( {
     pathRoot: 'views',
     templates: 'pages',
     partials: 'partials',
@@ -17,13 +27,13 @@ const l = createLoader( {
             { url: 'https://github.com/abschill/html-chunk-loader', label: 'Source Code' },
             { url: 'https://github.com/abschill/html-chunk-loader-examples', label: 'Examples' }
         ]
-    }
+    },
+    debug: true
 } );
 
 
 
-
-app.get( '/', ( req: Request, res: Response ) => res.send( l.template( 'home', {
+app.get( '/', ( req: HCLAppRequest, res: Response ) => res.send( req.app.mainLoader?.template( 'home', {
     content: 'HTML Chunk Loader',
     links: [
         { url: 'https://github.com/abschill/html-chunk-loader', label: 'Source Code' },
@@ -31,4 +41,5 @@ app.get( '/', ( req: Request, res: Response ) => res.send( l.template( 'home', {
     ]
 } ) ) );
 
-app.listen( 3001 );
+//set loader on app
+app.listen( 3001, () => app.mainLoader = myLoader );

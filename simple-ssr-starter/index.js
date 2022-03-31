@@ -17,12 +17,18 @@ const Handler = createLoader({
     watch: true
 });
 
+app.use( ( req, res, next ) => {
+    // bind the loader to your express application
+    req.app.loader = Handler;
+    next();
+} );
+
 
 app.get( '/', ( req, res ) => {
-    const page = Handler.template( 'home', {
+    const page = req.app.loader.template( 'home', {
         content: 'Home Page',
     } );
     res.send( page );
 } );
 
-app.listen( 3000 );
+app.listen( 3001 );
